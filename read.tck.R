@@ -1,11 +1,11 @@
 read.tck = function(filepath, n=50L) {
   # https://mrtrix.readthedocs.io/en/latest/getting_started/image_data.html#tracks-file-format-tck
-  # Place an early `file.size` check to identify corrupted files?
   # check n first lines for header information
   L = readLines(filepath, n=n, warn=FALSE) 
   id = trimws(L[1L])
   if (id != 'mrtrix tracks') 
     stop('File not in TCK format: Invalid first line.')  
+  
   fs = file.size(filepath) 
   if (fs/1024 < 100) # put sth. more meaningful here
     stop('File not in TCK format: file too small.')
