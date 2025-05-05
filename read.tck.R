@@ -4,7 +4,7 @@ read.tck = function(filepath, n=50L) {
   L = readLines(filepath, n=n, warn=FALSE) 
   id = trimws(L[1L])
   if (id != 'mrtrix tracks') 
-    stop('File not in TCK format: Invalid first line.')  
+    stop('File not in TCK format: invalid first line.')  
   
   fs = file.size(filepath) 
   if (fs/1024 < 100) # put sth. more meaningful here
@@ -12,7 +12,7 @@ read.tck = function(filepath, n=50L) {
   
   k = grep(pattern='END', x=L, useBytes=TRUE)
   if (length(k)==0L) 
-    stop('File not in TCK format: Invalid format.')
+    stop('File not in TCK format: invalid format.')
   
   header = read.table(text=L[2L:(k-1L)], sep=':', header=FALSE)
   header = c(list(id=id), split.default(trimws(header$V2), header$V1)) 
