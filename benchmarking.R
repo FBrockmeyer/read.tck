@@ -1,6 +1,7 @@
 ## read TCK files
 # source: https://openneuro.org/datasets/ds001226/versions/00001
-f = list.files('./Data/FOD_iFOD2_trackings', pattern='.tck$', full.names=TRUE) 
+# adapt path to folder:
+f = list.files(path='./Data/FOD_iFOD2_trackings', pattern='.tck$', full.names=TRUE) 
 
 if (exists('hasRun') == FALSE) {
   library(freesurferformats)
