@@ -1,13 +1,14 @@
 ## read TCK files
 # source: https://openneuro.org/datasets/ds001226/versions/00001
 # adapt path to folder:
-f = list.files(path='./Data/FOD_iFOD2_trackings', pattern='.tck$', full.names=TRUE) 
+f = list.files('./Data/FOD_iFOD2_trackings', pattern='.tck$', full.names=TRUE) 
 
 if (exists('hasRun') == FALSE) {
   library(freesurferformats)
-  body(read.dti.tck)[[6]]
+  body(read.dti.tck)[[6L]]
   read.dti.tck2 = read.dti.tck
-  body(read.dti.tck2)[[6]] = NULL
+  # remove check: 
+  body(read.dti.tck2)[[6L]] = NULL
   hasRun = TRUE 
 }
 
@@ -17,7 +18,10 @@ B =
   n = lapply(f, read.tck),
   times = 10L
 )
+
 B
+ggplot2::autoplot(B)
+
 
 
 
